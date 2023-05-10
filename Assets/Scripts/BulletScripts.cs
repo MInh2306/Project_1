@@ -17,4 +17,12 @@ public class BulletScripts : MonoBehaviour
     {
         rb.velocity = transform.right * speed;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Box"|| collision.gameObject.tag == "Ground")
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }
