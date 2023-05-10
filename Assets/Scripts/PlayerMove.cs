@@ -116,6 +116,11 @@ public class PlayerMove : MonoBehaviour
         {
             transform.position = new Vector3(-8, -2, 0); //test trạm Trap thì sẽ quay lại điểm bắt đầu
         }
+        //khi player nhảy lên cục movingblock thì sẽ di chuyển theo
+        if (collision.gameObject.name == "StandableUP")
+        {
+            transform.position = new Vector3(collision.gameObject.transform.position.x, 0, 0);
+        }
     }
 
 
