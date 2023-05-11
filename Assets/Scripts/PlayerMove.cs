@@ -49,7 +49,7 @@ public class PlayerMove : MonoBehaviour
         {
             Flip();
         }
-
+        
         //di chuyen trai phai
         float speedx = Mathf.Abs(this.rigid2D.velocity.x);
         if (Input.GetKey(KeyCode.RightArrow))
