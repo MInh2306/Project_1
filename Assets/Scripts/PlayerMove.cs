@@ -8,6 +8,7 @@ public class PlayerMove : MonoBehaviour
     public float jumpforce = 680f;
     public float maxSpeed = 5f;
     public float walkForce = 30f;
+    [SerializeField] private bool groundCheck = false;
 
     private bool facingRight = true;
     private float moveDirection; // hướng di chuyển
@@ -29,9 +30,10 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //JUMP
         if (Input.GetKeyDown(KeyCode.UpArrow)) //để không nhảy nhiều lần trên không trung (dùm tạm khi nào tạo hàm checkground sau)
         {
-            if(rigid2D.velocity.y == 0)
+            if(groundCheck)
             {
                 this.rigid2D.AddForce(transform.up * this.jumpforce);
             }
@@ -107,7 +109,19 @@ public class PlayerMove : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        Debug.Log(collision.gameObject.tag);
+        if(collision.gameObject.tag == "Ground" || collision.gameObject.tag == "MovingBlock")
+        {
+            groundCheck = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "MovingBlock")
+        {
+            groundCheck = false;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -116,13 +130,11 @@ public class PlayerMove : MonoBehaviour
         {
             transform.position = new Vector3(-8, -2, 0); //test trạm Trap thì sẽ quay lại điểm bắt đầu
         }
-        //khi player nhảy lên cục movingblock thì sẽ di chuyển theo
-        if (collision.gameObject.name == "StandableUP")
-        {
-            transform.position = new Vector3(collision.gameObject.transform.position.x, 0, 0);
-        }
+        Debug.Log(collision.gameObject.tag);
+        
     }
 
+   
 
 
 }

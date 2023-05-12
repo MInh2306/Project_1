@@ -20,7 +20,7 @@ public class BulletScripts : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Box"|| collision.gameObject.tag == "Ground")
+        if (collision.gameObject.tag == "Box"|| collision.gameObject.tag == "MapBorder" || collision.gameObject.tag == "Ground")
         {
             Destroy(this.gameObject);
         }

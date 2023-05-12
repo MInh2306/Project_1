@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Trap
   - MovingBlock
+  - MapBorder
   layers:
   - Default
   - TransparentFX
