@@ -4,27 +4,30 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    //Moving
     Rigidbody2D rigid2D;
     public float jumpforce = 680f;
     public float maxSpeed = 5f;
     public float walkForce = 30f;
     [SerializeField] private bool groundCheck = false;
-
+    //Flip
     private bool facingRight = true;
     private float moveDirection; // hướng di chuyển
-
+    //Shotting
     public GameObject shootingPoint;
     public GameObject bulletPrefab;
-
+    //Animation
     Animator animator;
-
 
 
     // Start is called before the first frame update
     void Start()
     {
+        //Moving
         rigid2D = GetComponent<Rigidbody2D>();
+        //Animation
         animator = GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
@@ -33,11 +36,17 @@ public class PlayerMove : MonoBehaviour
         //JUMP
         if (Input.GetKeyDown(KeyCode.UpArrow)) //để không nhảy nhiều lần trên không trung (dùm tạm khi nào tạo hàm checkground sau)
         {
-            if(groundCheck)
+            animator.SetBool("isJumping", true);
+            if (groundCheck)
             {
                 this.rigid2D.AddForce(transform.up * this.jumpforce);
+                
             }
-            
+
+        }
+        else
+        {
+            animator.SetBool("isJumping", false);
         }
         // Lấy giá trị ngang của trục
         moveDirection = Input.GetAxis("Horizontal");
@@ -121,6 +130,7 @@ public class PlayerMove : MonoBehaviour
         if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "MovingBlock")
         {
             groundCheck = false;
+
         }
     }
 

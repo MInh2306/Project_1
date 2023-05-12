@@ -5,7 +5,7 @@ using UnityEngine;
 public class SawTrapController : MonoBehaviour
 {
     //TRAP NÀY LUÔN DI CHUYỂN TRÁI PHẢI MỖI 3s
-    public float speed = 2f;
+    public float speed = 3f;
 
     float time = 0; //mốc thời gian ban đầu là 0
     float maxTime = 3f; //set tup cho cứ mỗi 3s thì sẽ chuyển hướng theo chiều ngược lại;
