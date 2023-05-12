@@ -22,7 +22,9 @@ public class SawTrapController : MonoBehaviour
         time += Time.deltaTime; //thời gian sẽ tăng dần
         if (time > maxTime) //sau 3s thì qua phải
         {
-            transform.position += new Vector3(speed,0f,0f)*Time.deltaTime;
+            //transform.position += new Vector3(speed,0f,0f)*Time.deltaTime;
+            
+            transform.Translate(speed * Time.deltaTime, 0f, 0f); //Translate là sử dụng Vector để di chuyển, còn position là di chuyển theo mặt phẳng tọa độ 2D
             //sau khi qua phải 3s (vì lúc này đã qua 3s đầu rồi nên nếu them 3s nữa thì maxtime + 3)
             if(time > maxTime * 2) 
             {
@@ -32,7 +34,9 @@ public class SawTrapController : MonoBehaviour
         }
         else //trước 3s đầu thì qua trái
         {
-            transform.position += new Vector3(-speed, 0f, 0f) * Time.deltaTime;
+            //transform.position += new Vector3(-speed, 0f, 0f) * Time.deltaTime;
+            
+            transform.Translate(-speed * Time.deltaTime, 0f, 0f);
         }
     }
 }

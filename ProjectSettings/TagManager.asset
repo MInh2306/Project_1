@@ -9,6 +9,7 @@ TagManager:
   - Trap
   - MovingBlock
   - MapBorder
+  - Trampoline
   layers:
   - Default
   - TransparentFX
