@@ -36,7 +36,7 @@ public class PlayerMove : MonoBehaviour
         //JUMP
         if (Input.GetKeyDown(KeyCode.UpArrow)) //để không nhảy nhiều lần trên không trung (dùm tạm khi nào tạo hàm checkground sau)
         {
-            animator.SetBool("isJumping", true);
+        
             if (groundCheck)
             {
                 this.rigid2D.AddForce(transform.up * this.jumpforce);
@@ -44,10 +44,7 @@ public class PlayerMove : MonoBehaviour
             }
 
         }
-        else
-        {
-            animator.SetBool("isJumping", false);
-        }
+        
         // Lấy giá trị ngang của trục
         moveDirection = Input.GetAxis("Horizontal");
 
@@ -95,6 +92,35 @@ public class PlayerMove : MonoBehaviour
             animator.SetBool("isRunning", false);
         }
 
+        /*if (Input.GetKeyDown(KeyCode.UpArrow)) //để không nhảy nhiều lần trên không trung (dùm tạm khi nào tạo hàm checkground sau)
+        {
+            animator.SetBool("isJumpping", true);
+        }
+        else
+        {
+            animator.SetBool("isJumpping", false);
+        }*/
+        Debug.Log(rigid2D.velocity.y);
+        if(rigid2D.velocity.y > 0)
+        {
+            animator.SetBool("isJumpping", true);
+            animator.SetBool("isRunning", false);
+        }
+        else
+        {
+            animator.SetBool("isJumpping", false);
+        }
+
+        if(rigid2D.velocity.y < 0)
+        {
+            animator.SetBool("isFalling", true);
+            animator.SetBool("isRunning", false);
+            animator.SetBool("isJumpping", false);
+        }
+        else
+        {
+            animator.SetBool("isFalling", false);
+        }
 
 
         if (Input.GetKeyDown(KeyCode.Space))
