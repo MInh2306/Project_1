@@ -46,7 +46,8 @@ public class PlayerMove : MonoBehaviour
         }
         
         // Lấy giá trị ngang của trục
-        moveDirection = Input.GetAxis("Horizontal");
+        //moveDirection = Input.GetAxis("Horizontal"); hàm này lấy giá trị chính xasc hơn bao gồm cả số thập phân
+        moveDirection = Input.GetAxisRaw("Horizontal"); //hàm này cũng giống nhưng chỉ lây -1, 0, 1
 
         // Xác định hướng quay nhân vật
         if (moveDirection > 0 && !facingRight)
@@ -100,7 +101,7 @@ public class PlayerMove : MonoBehaviour
         {
             animator.SetBool("isJumpping", false);
         }*/
-        Debug.Log(rigid2D.velocity.y);
+        //Debug.Log(rigid2D.velocity.y);
         if(rigid2D.velocity.y > 0)
         {
             animator.SetBool("isJumpping", true);
@@ -121,8 +122,9 @@ public class PlayerMove : MonoBehaviour
         {
             animator.SetBool("isFalling", false);
         }
-
-
+        //Wall stick fix
+        
+        //Shot
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Fire();
@@ -145,21 +147,28 @@ public class PlayerMove : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Debug.Log(collision.gameObject.tag);
-        if(collision.gameObject.tag == "Ground" || collision.gameObject.tag == "MovingBlock")
+        if(collision.gameObject.tag == "Ground" || collision.gameObject.tag == "MovingBlock" )
         {
             groundCheck = true;
+        }
+
+        if (collision.gameObject.tag == "Trap")
+        {
+            transform.position = new Vector3(-8, -2, 0); //test trạm Trap thì sẽ quay lại điểm bắt đầu
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "MovingBlock")
+        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "MovingBlock" )
         {
             groundCheck = false;
 
         }
     }
 
+
+    //Chạm vào trap là trigger
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Trap")

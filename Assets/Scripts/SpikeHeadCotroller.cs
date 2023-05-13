@@ -21,8 +21,9 @@ public class SpikeHeadCotroller : MonoBehaviour
     void Update()
     {
         //lên xuống
+        transform.Translate(Vector2.up * speed * Time.deltaTime);
         //không dùng transform vì dùng addfỏce sẽ tự nhiên hơn
-        rb.AddForce(Vector2.up * speed);
+        //rb.AddForce(Vector2.up * speed);
         
     }
 
