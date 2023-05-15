@@ -144,10 +144,11 @@ public class PlayerMove : MonoBehaviour
         Instantiate(bulletPrefab, shootingPoint.transform.position, shootingPoint.transform.rotation);
     }
 
+    //Ground check 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Debug.Log(collision.gameObject.tag);
-        if(collision.gameObject.tag == "Ground" || collision.gameObject.tag == "MovingBlock" )
+        if(collision.gameObject.tag == "Ground" || collision.gameObject.tag == "MovingBlock" || collision.gameObject.tag == "MapBorder")
         {
             groundCheck = true;
         }
