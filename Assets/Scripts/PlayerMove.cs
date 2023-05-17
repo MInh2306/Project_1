@@ -19,6 +19,9 @@ public class PlayerMove : MonoBehaviour
     //Animation
     Animator animator;
 
+    //SpawnPoint
+    GameObject spawnpoint;
+
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +30,8 @@ public class PlayerMove : MonoBehaviour
         rigid2D = GetComponent<Rigidbody2D>();
         //Animation
         animator = GetComponent<Animator>();
-        
+        //spawnpoint
+        spawnpoint = GameObject.Find("SpawnPoint");
     }
 
     // Update is called once per frame
@@ -174,8 +178,9 @@ public class PlayerMove : MonoBehaviour
     {
         if (collision.gameObject.tag == "Trap")
         {
-            transform.position = new Vector3(-8, -2, 0); //test trạm Trap thì sẽ quay lại điểm bắt đầu
-        }
+            //transform.position = new Vector3(-8, -2, 0); //test trạm Trap thì sẽ quay lại điểm bắt đầu
+            transform.position = spawnpoint.transform.position;
+         }
         Debug.Log(collision.gameObject.tag);
         
     }
