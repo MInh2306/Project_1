@@ -20,7 +20,7 @@ public class PlayerMove : MonoBehaviour
     Animator animator;
 
     //SpawnPoint
-    GameObject spawnpoint;
+    public GameObject spawnpoint;
 
 
     // Start is called before the first frame update
@@ -31,7 +31,7 @@ public class PlayerMove : MonoBehaviour
         //Animation
         animator = GetComponent<Animator>();
         //spawnpoint
-        spawnpoint = GameObject.Find("SpawnPoint");
+        //spawnpoint = GameObject.Find("SpawnPoint");
     }
 
     // Update is called once per frame
