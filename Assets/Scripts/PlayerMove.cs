@@ -159,7 +159,8 @@ public class PlayerMove : MonoBehaviour
 
         if (collision.gameObject.tag == "Trap")
         {
-            transform.position = new Vector3(-8, -2, 0); //test trạm Trap thì sẽ quay lại điểm bắt đầu
+            //transform.position = new Vector3(-8, -2, 0); 
+            transform.position = spawnpoint.transform.position; // quay lại spawwpoint or checkpoint
         }
     }
 
@@ -178,10 +179,11 @@ public class PlayerMove : MonoBehaviour
     {
         if (collision.gameObject.tag == "Trap")
         {
-            //transform.position = new Vector3(-8, -2, 0); //test trạm Trap thì sẽ quay lại điểm bắt đầu
+            //transform.position = new Vector3(-4.38f, 1.61f, 0); //test trạm Trap thì sẽ quay lại điểm bắt đầu
             transform.position = spawnpoint.transform.position;
-         }
-        Debug.Log(collision.gameObject.tag);
+            //Debug.Log(transform.position);
+        }
+        
         
     }
 
