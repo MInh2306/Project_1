@@ -6,6 +6,7 @@ public class CheckpointController : MonoBehaviour
 {
     public GameObject spawnpoint;
 
+    [SerializeField] bool alreadyTouch = false;
     Animator animator;
     // Start is called before the first frame update
     void Start()
@@ -23,10 +24,11 @@ public class CheckpointController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && alreadyTouch==false)
         {
             spawnpoint.transform.position = this.transform.position;
             animator.SetTrigger("isTouch");
+            alreadyTouch = true;
 
         }
     }

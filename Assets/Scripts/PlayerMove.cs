@@ -166,7 +166,7 @@ public class PlayerMove : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "MovingBlock" )
+        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "MovingBlock" || collision.gameObject.tag == "MapBorder")
         {
             groundCheck = false;
 

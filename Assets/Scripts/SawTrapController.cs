@@ -7,6 +7,7 @@ public class SawTrapController : MonoBehaviour
     public float distance = 5f;
     private float startPosition;
     private Rigidbody2D rb;
+    
 
     private void Start()
     {
@@ -18,9 +19,6 @@ public class SawTrapController : MonoBehaviour
     {
         Vector2 newPosition = new Vector2(startPosition + Mathf.PingPong(Time.time, distance), rb.position.y);
         rb.MovePosition(newPosition);
-
-        
-        Debug.Log(Mathf.PingPong(Time.time, distance));
     }
 
     
