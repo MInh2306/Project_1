@@ -9,10 +9,15 @@ public class EnemyAI : MonoBehaviour
     //Chasing
     public float chasingRange = 10f;
     public float speed = 2f;
+    public float chasingSpeed = 4f;
+    public GameObject spawnPos;
 
     //Facing 
     private Vector3 prePos;
     [SerializeField] bool facingLeft = true;
+
+    //Animation
+    Animator animator;
 
 
     // Start is called before the first frame update
@@ -20,6 +25,9 @@ public class EnemyAI : MonoBehaviour
     {
         //target = GameObject.Find("Player");
         prePos = transform.position; // hướng hiện tại
+
+        //Animator
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -27,23 +35,45 @@ public class EnemyAI : MonoBehaviour
     {
         //tính toán khoảng cách giữa 2 nhân vật
         float distance = Vector2.Distance(transform.position, target.transform.position);
+        float distanceToSpawn = Vector2.Distance(transform.position, spawnPos.transform.position);
+
+        //Chasing
         if(distance < chasingRange)
         {
-            transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
-            
-            //kích hoạt animation Run
+            //Chỉ di chuyển theo trục x
+            float targetX = target.transform.position.x;
+            Vector2 newPosition = new Vector2(targetX, transform.position.y);
+            transform.position = Vector2.MoveTowards(transform.position, newPosition, chasingSpeed * Time.deltaTime);
 
+            //di chuyển theo x, y như topdown
+            //transform.position = Vector2.MoveTowards(transform.position, target.transform.position, chasingSpeed * Time.deltaTime);
+
+            //kích hoạt animation Run
+            animator.SetBool("isRunning", true);
+            animator.SetBool("isWalking", false);
         }
         else
         {
-           //chuyển động qua lại hoặc đứng yên Idle
-           
-           //Kích hoạt animation walk
+            if(distanceToSpawn > 2)
+            {
+                //quay lại vị trí ban đầu khi không đuổi nữa
+                transform.position = Vector2.MoveTowards(transform.position, spawnPos.transform.position, speed * Time.deltaTime);
+                animator.SetBool("isWalking", true); // đoạn này chuyển thành animation Walk
+            }
+            else
+            {
+                animator.SetBool("isWalking", false); // từ Walk -> idle
+            }
+            
+            //chuyển động qua lại hoặc đứng yên Idle
+
+            //Kích hoạt animation idle
+            animator.SetBool("isRunning", false);
         }
 
         
 
-        //facing
+        //---------------------------FACING------------------------------------
 
         //lưu lại vị trí hiện tại của nhân vật
         Vector3 currentPos = transform.position;
@@ -71,7 +101,11 @@ public class EnemyAI : MonoBehaviour
         //Lưu lại vị trí hiện tại để sử dụng cho lần cập nhật tiếp theo
         prePos = currentPos;
 
-        
+        //QUay lại vị trí ban đầu nếu lỡ đi quá xa hoặc rớt xuống
+        if(transform.position.y <= 3f)
+        {
+            transform.position = spawnPos.transform.position;
+        }
 
     }
     void Flip()
