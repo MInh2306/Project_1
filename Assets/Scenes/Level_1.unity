@@ -1698,6 +1698,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SawTrapPrefab (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5604385903603214542, guid: 9e147d969462d6747be72143640d9f6e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e147d969462d6747be72143640d9f6e, type: 3}
 --- !u!1001 &586823236
