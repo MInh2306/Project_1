@@ -19,6 +19,9 @@ public class EnemyAI : MonoBehaviour
     //Animation
     Animator animator;
 
+    //Be shooted
+    int count = 0;
+
 
     // Start is called before the first frame update
     void Start()
@@ -86,14 +89,14 @@ public class EnemyAI : MonoBehaviour
         {
             Flip();
             //Nhân vật đang đi qua phải
-            Debug.Log("qua phải");
+            //Debug.Log("qua phải");
             
         }
         else if(moveDirec.x < 0 && !facingLeft)
         {
             Flip();
             //Nhân vật đang đi qua trái
-            Debug.Log("qua trái");
+            //Debug.Log("qua trái");
             // Quay nhân vật về phía hướng di chuyển
            
         }
@@ -120,5 +123,20 @@ public class EnemyAI : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //kích hoạt animation bị bắn và đếm số đạn bị bắn rồi chết
+        if(collision.gameObject.tag == "Bullet")
+        {
+            animator.SetBool("isHitted",true);
+            count++;
+            Debug.Log(count);
+            if(count >= 10)
+            {
+                Destroy(gameObject);
+                //nên thêm cái nổ trước khi chớt
+            }
+        }
+        else
+        {
+            animator.SetBool("isHitted", false);
+        }
     }
 }

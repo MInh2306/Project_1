@@ -10,6 +10,7 @@ TagManager:
   - MovingBlock
   - MapBorder
   - Trampoline
+  - Bullet
   layers:
   - Default
   - TransparentFX
