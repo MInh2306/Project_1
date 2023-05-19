@@ -7,6 +7,10 @@ public class SpikeHeadCotroller : MonoBehaviour
     public float speed;
     Animator animator;
 
+    //cài đặt để chọn di chuyển phải or trái
+    public bool Horizontal_movement = false;
+    public bool Vertical_movement = false;
+
     //đế tính toán vận tốc thì cần rigidbody
     Rigidbody2D rb;
     
@@ -23,7 +27,14 @@ public class SpikeHeadCotroller : MonoBehaviour
         //lên xuống
         //transform.Translate(Vector2.up * speed * Time.deltaTime);
         //không dùng transform vì dùng addfỏce sẽ tự nhiên hơn
-        rb.AddForce(Vector2.up * speed);
+        if (Horizontal_movement)
+        {
+            rb.AddForce(Vector2.right * speed);
+        }else if (Vertical_movement)
+        {
+            rb.AddForce(Vector2.up * speed);
+        }
+        
         
     }
 
