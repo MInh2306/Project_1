@@ -190,6 +190,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8008353766463108645, guid: 4acb5e31f951d244fbe2e7909e13294f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8bf0614f8e1ca7e4aa90bee29a44f402, type: 2}
+    - target: {fileID: 8008353766463108645, guid: 4acb5e31f951d244fbe2e7909e13294f, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8008353766463108646, guid: 4acb5e31f951d244fbe2e7909e13294f, type: 3}
+      propertyPath: pressed
+      value: 
+      objectReference: {fileID: 21300000, guid: 9d2d18ec410821a4485a57d3d4401f5a, type: 2}
+    - target: {fileID: 8008353766463108646, guid: 4acb5e31f951d244fbe2e7909e13294f, type: 3}
+      propertyPath: release
+      value: 
+      objectReference: {fileID: 21300000, guid: 8bf0614f8e1ca7e4aa90bee29a44f402, type: 2}
     - target: {fileID: 8008353766463108646, guid: 4acb5e31f951d244fbe2e7909e13294f, type: 3}
       propertyPath: chossen_updownblock
       value: 
@@ -76514,6 +76530,7 @@ MonoBehaviour:
   groundCheck: 0
   shootingPoint: {fileID: 1274895399}
   bulletPrefab: {fileID: 3064819648763657347, guid: f96fc4c6b6e19e841af38d229730819b, type: 3}
+  spawnpoint: {fileID: 0}
 --- !u!1001 &1862029338
 PrefabInstance:
   m_ObjectHideFlags: 0

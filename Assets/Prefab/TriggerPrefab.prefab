@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 155f0058a98bf22468f6c42a0a7ad854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chossen_updownblock: {fileID: 0}
+  chossen_updownblock: {fileID: 4154676790444749932, guid: 0560463243802874fa1b5c5717ab821b, type: 3}
   pressed: {fileID: 21300000, guid: 9d2d18ec410821a4485a57d3d4401f5a, type: 2}
   release: {fileID: 21300000, guid: 8bf0614f8e1ca7e4aa90bee29a44f402, type: 2}
 --- !u!61 &8008353766463108647
