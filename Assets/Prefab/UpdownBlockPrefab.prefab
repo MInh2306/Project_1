@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 4154676790444749923}
   - component: {fileID: 4154676790444749920}
   - component: {fileID: 4154676790444749932}
+  - component: {fileID: 1269473142686102142}
   m_Layer: 0
   m_Name: UpdownBlockPrefab
   m_TagString: Ground
@@ -186,7 +187,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0.49998927, y: -0.00014209747}
   m_SpriteTilingProperty:
@@ -237,6 +238,27 @@ MonoBehaviour:
   movingSpeed: 2
   isMovingDown: 0
   isMovingUp: 0
+  posA: {fileID: 0}
+  posB: {fileID: 0}
+--- !u!251 &1269473142686102142
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4154676790444749921}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &4154676790825904518
 GameObject:
   m_ObjectHideFlags: 0
