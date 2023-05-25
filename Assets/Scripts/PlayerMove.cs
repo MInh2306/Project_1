@@ -22,6 +22,10 @@ public class PlayerMove : MonoBehaviour
     //SpawnPoint
     public GameObject spawnpoint;
 
+    //mobile
+    public bool R_Button = false;
+    public bool L_Button = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -65,7 +69,7 @@ public class PlayerMove : MonoBehaviour
         
         //di chuyen trai phai
         float speedx = Mathf.Abs(this.rigid2D.velocity.x);
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (/*Input.GetKey(KeyCode.RightArrow) || */R_Button)
         {
 
             if (speedx < maxSpeed)
@@ -75,7 +79,7 @@ public class PlayerMove : MonoBehaviour
 
         }
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (/*Input.GetKey(KeyCode.LeftArrow) || */ L_Button)
         {
 
             if (speedx < maxSpeed)
@@ -84,9 +88,10 @@ public class PlayerMove : MonoBehaviour
             }
 
         }
+
 
         //Chuyển animation
-        if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
         {
             //Trigger Animation RUn khi ấn nút di chuyển
             animator.SetBool("isRunning", true);
@@ -195,7 +200,31 @@ public class PlayerMove : MonoBehaviour
         
     }
 
-   
+    //Ipad controller
+    public void MoveLeft()
+    {
+        moveDirection = -1;
+        L_Button = true;
+        Debug.Log("moveDirection: " + moveDirection);
+    }
+
+    public void MoveRight()
+    {
+        moveDirection = 1;
+        R_Button = true;
+        Debug.Log("moveDirection: " + moveDirection);
+    }
+
+    public void StopMoving()
+    {
+        moveDirection = 0f;
+    }
+
+    public void UpButtonDown()
+    {
+        Debug.Log("Up pressed");
+    }
+
 
 
 }
