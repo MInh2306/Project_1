@@ -69,7 +69,7 @@ public class PlayerMove : MonoBehaviour
         
         //di chuyen trai phai
         float speedx = Mathf.Abs(this.rigid2D.velocity.x);
-        if (/*Input.GetKey(KeyCode.RightArrow) || */R_Button)
+        if (Input.GetKey(KeyCode.RightArrow) || R_Button)
         {
 
             if (speedx < maxSpeed)
@@ -79,7 +79,7 @@ public class PlayerMove : MonoBehaviour
 
         }
 
-        if (/*Input.GetKey(KeyCode.LeftArrow) || */ L_Button)
+        if (Input.GetKey(KeyCode.LeftArrow) || L_Button)
         {
 
             if (speedx < maxSpeed)
